@@ -3,14 +3,12 @@ package com.rightside.helping.Repository;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.rightside.helping.models.Empresa;
-import com.rightside.helping.models.Marcador;
 import com.rightside.helping.models.Pessoa;
 import com.rightside.helping.models.Produto;
 import com.rightside.helping.models.Projeto;
@@ -32,10 +30,10 @@ public class FirebaseRepository {
         return getBanco().collection(ConstantUtils.PROJETOS).document(getIdPessoaLogada()).set(projeto.returnProjeto());
     }
 
-    public static void salva(Marcador marcador){
-        getBanco().collection(ConstantUtils.MARCADOR).add(marcador).addOnSuccessListener(documentReference -> {
+    public static void salva(Empresa marcador){
+        getBanco().collection(ConstantUtils.EMPRESAS).add(marcador).addOnSuccessListener(documentReference -> {
             marcador.setId(documentReference.getId());
-            getBanco().collection(ConstantUtils.MARCADOR).document(documentReference.getId()).set(marcador);
+            getBanco().collection(ConstantUtils.EMPRESAS).document(documentReference.getId()).set(marcador);
         });
     }
 
@@ -64,6 +62,9 @@ public class FirebaseRepository {
         return getBanco().collection(ConstantUtils.PROJETOS);
     }
 
+    public static CollectionReference getEmpresas() {
+        return getBanco().collection(ConstantUtils.EMPRESAS);
+    }
 
 
     public LiveData<List<Pessoa>> getMutableLiveDataPessoas() {

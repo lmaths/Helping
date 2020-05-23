@@ -3,6 +3,7 @@ package com.rightside.helping;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,6 +15,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
 
@@ -46,14 +49,13 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         mapFragment.getMapAsync(this);
 
         val viewModelProjetos = new ViewModelProvider(this).get(ViewModelProjetos.class);
-        LiveData<QuerySnapshot> liveData = viewModelProjetos.getQuerySnapshotLiveDataMarcadores();
 
         FirebaseRepository.getEmpresas().addSnapshotListener((queryDocumentSnapshots, e) -> {
-            Log.v("helping", "Teste Certo " + queryDocumentSnapshots.toObjects(Empresa.class));
             criaMarkersEmpresas(queryDocumentSnapshots);
         });
-        liveData.observe(this, queryDocumentSnapshots -> {
-     //       criaMarkers(queryDocumentSnapshots);
+
+        FirebaseRepository.getProjetos().addSnapshotListener((queryDocumentSnapshots, e) -> {
+            criaMarkers(queryDocumentSnapshots);
         });
 
 //Deletar isso tudo depois
@@ -84,6 +86,7 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
             for (Empresa projeto : listaEmpresas) {
                 try {
                     Marker marker = GeralUtils.criaMarkerEmpresa(mMap, projeto, this);
+                    marker.setTag("empresa");
                     listaDeMarkers.add(marker);
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -132,6 +135,7 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
             for (Empresa projeto : listaEmpresas) {
                 try {
                     Marker marker = GeralUtils.criaMarker(mMap, projeto, this);
+                    marker.setTag("projeto");
                     listaDeMarkers.add(marker);
                 } catch (Exception ex) {
                     ex.printStackTrace();

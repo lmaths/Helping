@@ -2,4 +2,17 @@
     <string name="app_name">Helping</string>
     <string name="title_activity_principal">Map</string>
     <string name="chave_matheus">AIzaSyC6r3HzBazQdHISk5kL5aGbzanEkLZg96I</string>
+
+    <string name="style_json">
+        [
+          {
+            "featureType": "poi.business",
+            "stylers": [
+              {
+                "visibility": "off"
+              }
+            ]
+          }
+        ]
+    </string>
 </resources>

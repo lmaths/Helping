@@ -51,6 +51,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:18.0.0'
 
 
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+
 }
 
 apply plugin: 'com.android.application'

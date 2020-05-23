@@ -6,4 +6,6 @@ public class ConstantUtils {
     public static final String EMPRESA = "EMPRESA";
     public static final String CONSUMIDOR = "CONSUMIDOR";
     public static final String PRODUTO = "produto";
+
+    public static final String PROJETOS = "projetos";
 }

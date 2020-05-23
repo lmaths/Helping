@@ -10,6 +10,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.rightside.helping.models.Pessoa;
 import com.rightside.helping.models.Produto;
+import com.rightside.helping.models.Projeto;
 import com.rightside.helping.utils.ConstantUtils;
 
 import java.util.List;
@@ -17,10 +18,17 @@ import java.util.List;
 public class FirebaseRepository {
 
     private MutableLiveData<List<Pessoa>> mutableLiveDataPessoas = new MutableLiveData<>();
+    private MutableLiveData<List<Projeto>> mutableLiveDataProjetos = new MutableLiveData<>();
+
 
     public static FirebaseFirestore getBanco() {
         return FirebaseFirestore.getInstance();
     }
+
+    public static Task<Void> salvarProjeto(final Projeto projeto) {
+        return getBanco().collection(ConstantUtils.PROJETOS).document(getIdPessoaLogada()).set(projeto.returnProjeto());
+    }
+
 
     public static Task<Void> salvarPessoa(final Pessoa user) {
         return getBanco().collection(ConstantUtils.PESSOAS).document(user.getId()).set(user.returnPessoa());
@@ -43,6 +51,10 @@ public class FirebaseRepository {
         return getBanco().collection(ConstantUtils.PESSOAS);
     }
 
+    public static CollectionReference getProjetos() {
+        return getBanco().collection(ConstantUtils.PROJETOS);
+    }
+
 
 
     public LiveData<List<Pessoa>> getMutableLiveDataPessoas() {
@@ -51,6 +63,14 @@ public class FirebaseRepository {
         });
         return mutableLiveDataPessoas;
     }
+
+    public LiveData<List<Projeto>> getMutableLiveDataProjetos() {
+        getProjetos().addSnapshotListener((queryDocumentSnapshots, e) -> {
+            mutableLiveDataProjetos.setValue(queryDocumentSnapshots.toObjects(Projeto.class));
+        });
+        return mutableLiveDataProjetos;
+    }
+
 
 
 

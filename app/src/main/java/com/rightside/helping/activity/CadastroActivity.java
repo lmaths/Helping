@@ -8,9 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.rightside.helping.R;
+import com.rightside.helping.Repository.FirebaseRepository;
+import com.rightside.helping.models.Pessoa;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -23,6 +26,17 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         ButterKnife.bind(this);
         configuraSpinner();
+        Bundle bundle = getIntent().getExtras();
+        String nome = bundle.getString("nomeUsuario");
+        editTextNome.setText(nome);
+    }
+
+    @OnClick(R.id.button_cadastro)
+    public void salvarUsuario(){
+        String nome = editTextNome.getText().toString();
+        String tipo = spinnerTipo.getSelectedItem().toString();
+        Pessoa p = new Pessoa(nome, "1", tipo, 0.0,0.0);
+        FirebaseRepository.salvarPessoa(p);
     }
 
     private void configuraSpinner() {

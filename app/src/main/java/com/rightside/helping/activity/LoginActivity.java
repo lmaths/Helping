@@ -68,9 +68,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = auth.getCurrentUser();
                             Intent i = new Intent(LoginActivity.this, CadastroActivity.class);
-                            i.putExtra("user", user);
+                            i.putExtra("nomeUsuario", user.getDisplayName());
                             startActivity(i);
                         } else {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -94,4 +93,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+
 }

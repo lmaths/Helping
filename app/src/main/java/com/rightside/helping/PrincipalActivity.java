@@ -14,8 +14,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.rightside.helping.activity.CadastroActivity;
-import com.rightside.helping.activity.LoginActivity;
+import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.models.Pessoa;
 
 import java.util.ArrayList;
@@ -34,14 +33,14 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        Pessoa pessoa = new Pessoa("joao", "1", -21.658840, -42.347540, "Donatario");
-        Pessoa joao = new Pessoa("Pedro", "2", -21.655753,-42.347941, "Donatario");
+        Pessoa pessoa = new Pessoa("joao", "1", "Donatario", -21.658840, -42.347540);
+        Pessoa joao = new Pessoa("Pedro", "2","Donatario", -21.655753,-42.347941);
         pessoaList = new ArrayList<>();
 
         pessoaList.add(pessoa);
         pessoaList.add(joao);
 
-        startActivity(new Intent(PrincipalActivity.this, LoginActivity.class));
+        FirebaseRepository.salvarPessoa(pessoa);
 
     }
 

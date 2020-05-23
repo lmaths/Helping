@@ -23,6 +23,9 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         ButterKnife.bind(this);
         configuraSpinner();
+        Bundle bundle = getIntent().getExtras();
+        String nome = bundle.getString("nomeUsuario");
+        editTextNome.setText(nome);
     }
 
     private void configuraSpinner() {

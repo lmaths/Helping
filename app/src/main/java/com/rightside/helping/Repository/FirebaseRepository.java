@@ -25,7 +25,7 @@ public class FirebaseRepository {
         return getBanco().collection(ConstantUtils.PESSOAS).document(user.getId()).set(user.returnPessoa());
     }
 
-    public static String getIdPessoa() {
+    public static String getIdPessoaLogada() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 

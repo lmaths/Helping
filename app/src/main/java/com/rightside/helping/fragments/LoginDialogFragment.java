@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -28,8 +29,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.rightside.helping.R;
+import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.activity.CadastroActivity;
+import com.rightside.helping.utils.ConstantUtils;
 
 import butterknife.ButterKnife;
 
@@ -89,10 +94,7 @@ public class LoginDialogFragment extends DialogFragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Log.d(TAG, "signInWithCredential:success");
-                    Intent i = new Intent(getContext(), CadastroActivity.class);
-                    i.putExtra("nomeUsuario", user.getDisplayName());
-                    startActivity(i);
-                    dismiss();
+                    verificaPessoa();
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.getException());
                 }
@@ -114,6 +116,26 @@ public class LoginDialogFragment extends DialogFragment {
                 Log.w(TAG, "Google sign in failed", e);
             }
         }
+    }
+
+
+    private void verificaPessoa() {
+        final DocumentReference documentReference = FirebaseRepository.getBanco().collection(ConstantUtils.PESSOAS).document(FirebaseRepository.getIdPessoaLogada());
+        documentReference.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot documentSnapshot = task.getResult();
+                if (documentSnapshot.exists()) {
+                    Toast.makeText(getContext(), "Bem vindo de volta", Toast.LENGTH_SHORT).show();
+                    dismiss();
+                } else {
+                    Intent i = new Intent(getContext(), CadastroActivity.class);
+                    i.putExtra("nomeUsuario", user.getDisplayName());
+                    startActivity(i);
+                    dismiss();
+                }
+
+            }
+        });
     }
 
 

@@ -8,15 +8,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Pessoa {
     private String nome;
     private String id;
     private String tipo = "";
     private double latitude, longitude;
-
 
     public LatLng getLatLng() {
         return new LatLng(getLatitude(), getLongitude());

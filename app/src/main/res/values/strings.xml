@@ -5,6 +5,12 @@
     <string name="chave_ivan">AIzaSyBGZ4MdvcvR-9Tzly5AsywoRIIoq8QQqzE</string>
     <string name="chave_raphael">AIzaSyBZymUF0DQYXks4mMpHsOvR1qgHIqrAecI</string>
 
+    <string-array name="tipos_array">
+        <item>Donatário</item>
+        <item>Empresa</item>
+        <item>Consumidor</item>
+    </string-array>
+
 
     <string name="style_json">
         [

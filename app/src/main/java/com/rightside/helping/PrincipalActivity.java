@@ -1,5 +1,6 @@
 package com.rightside.helping;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
@@ -15,10 +16,16 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
+
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Projeto;
 import com.rightside.helping.utils.GeralUtils;
 import com.rightside.helping.viewmodels.ViewModelProjetos;
+import com.rightside.helping.activity.NavigationActivity;
+import com.rightside.helping.fragments.LoginDialogFragment;
+import com.rightside.helping.models.Pessoa;
+import com.rightside.helping.utils.ConstantUtils;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +52,8 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
             criaMarkers(queryDocumentSnapshots);
         });
 
+
+        startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
 
     }
 

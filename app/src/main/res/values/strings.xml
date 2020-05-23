@@ -5,6 +5,8 @@
     <string name="chave_ivan">AIzaSyBGZ4MdvcvR-9Tzly5AsywoRIIoq8QQqzE</string>
     <string name="chave_raphael">AIzaSyBZymUF0DQYXks4mMpHsOvR1qgHIqrAecI</string>
 
+    <string name="foto_perfil">https://cultura.estadao.com.br/blogs/babel/wp-content/uploads/sites/110/2019/07/ESTEV%C3%83O.jpg</string>
+
     <string-array name="tipos_array">
         <item>Donatário</item>
         <item>Empresa</item>
@@ -27,4 +29,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

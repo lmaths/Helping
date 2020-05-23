@@ -37,8 +37,11 @@ public class CadastroActivity extends AppCompatActivity {
     @OnClick(R.id.button_cadastro)
     public void salvarUsuario(){
         String nome = editTextNome.getText().toString();
+        String email = "email";
+        String foto = "foto";
+        String telefone = "telefone";
         String tipo = spinnerTipo.getSelectedItem().toString();
-        Pessoa p = new Pessoa(nome, FirebaseRepository.getIdPessoaLogada(), tipo);
+        Pessoa p = new Pessoa(nome, FirebaseRepository.getIdPessoaLogada(), email, foto, telefone,tipo);
 
         FirebaseRepository.salvarPessoa(p).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

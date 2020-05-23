@@ -12,17 +12,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Pessoa {
-    private String nome;
     private String id;
+    private String nome;
+    private String email;
+    private String foto;
+    private String telefone;
     private String tipo = "";
-
-
-
 
     public HashMap<String, Object> returnPessoa() {
         HashMap<String, Object> pessoa = new HashMap<>();
         pessoa.put("id", getId());
         pessoa.put("nome", getNome());
+        pessoa.put("email", getEmail());
+        pessoa.put("foto", getFoto());
+        pessoa.put("telefone", getTelefone());
         pessoa.put("tipo", getTipo());
         return pessoa;
     }

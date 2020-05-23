@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.models.Pessoa;
+import com.rightside.helping.utils.ConstantUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +33,8 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        Pessoa pessoa = new Pessoa("joao", "1", "Donatario", -21.658840, -42.347540);
-        Pessoa joao = new Pessoa("Pedro", "2","Donatario", -21.655753,-42.347941);
+        Pessoa pessoa = new Pessoa("joao", "1", ConstantUtils.DONATARIO, -21.658840, -42.347540);
+        Pessoa joao = new Pessoa("Pedro", "2", ConstantUtils.DONATARIO, -21.655753,-42.347941);
         pessoaList = new ArrayList<>();
 
         pessoaList.add(pessoa);

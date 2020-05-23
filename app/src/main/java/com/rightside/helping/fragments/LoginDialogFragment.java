@@ -1,12 +1,20 @@
-package com.rightside.helping.activity;
+package com.rightside.helping.fragments;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -21,11 +29,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.rightside.helping.R;
+import com.rightside.helping.activity.CadastroActivity;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class LoginActivity extends AppCompatActivity {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class LoginDialogFragment extends DialogFragment {
 
     private static final String TAG = "LoginGoogle";
     private GoogleSignInClient mGoogleSignInClient;
@@ -35,12 +47,18 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 9001;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
+    public static LoginDialogFragment novaInstancia() {
+       LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
+       return loginDialogFragment;
+    }
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_login_dialog, container, false);
+        ButterKnife.bind(getContext(), view);
         auth = FirebaseAuth.getInstance();
 
         user = auth.getCurrentUser();
@@ -49,40 +67,44 @@ public class LoginActivity extends AppCompatActivity {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
+
+        signIn();
+        return view;
     }
 
-    @OnClick(R.id.button_login)
+
     public void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "signInWithCredential:success");
-                            Intent i = new Intent(LoginActivity.this, CadastroActivity.class);
-                            i.putExtra("nomeUsuario", user.getDisplayName());
-                            startActivity(i);
-                        } else {
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                        }
+        auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    Log.d(TAG, "signInWithCredential:success");
+                    Intent i = new Intent(getContext(), CadastroActivity.class);
+                    i.putExtra("nomeUsuario", user.getDisplayName());
+                    startActivity(i);
+                    dismiss();
+                } else {
+                    Log.w(TAG, "signInWithCredential:failure", task.getException());
+                }
+            }
+        });
 
-                    }
-                });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -94,4 +116,14 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Dialog dialog = getDialog();
+        if(dialog != null) {
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        }
+    }
 }

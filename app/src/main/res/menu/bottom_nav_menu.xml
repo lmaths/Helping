@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragment_marketplace"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Marketplace" />
+
+    <item
+        android:id="@+id/fragment_votos"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Votos" />
+
+    <item
+        android:id="@+id/fragment_promocoes"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Promoções" />
+
+    <item
+        android:id="@+id/fragment_perfil"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="Perfil" />
+
+</menu>

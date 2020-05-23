@@ -2,6 +2,7 @@ package com.rightside.helping;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -40,9 +41,6 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         pessoaList.add(joao);
 
         FirebaseRepository.salvarPessoa(pessoa);
-
-
-
 
     }
 

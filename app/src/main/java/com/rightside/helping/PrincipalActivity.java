@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
 
+import com.rightside.helping.fragments.NovoProjetoDialogFragment;
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Projeto;
 import com.rightside.helping.utils.GeralUtils;
@@ -53,7 +54,7 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         });
 
 
-        startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
+      //  startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
 
     }
 
@@ -66,14 +67,13 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         //necessitamos pegar a localização do usuario aqui para mover a camera até ele ao abri o mapa
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-21.658840, -42.347542), 17f));
 
-
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
-            public boolean onMarkerClick(Marker marker) {
+            public void onInfoWindowClick(Marker marker) {
                 VotacaoFragment.novaInstancia(marker.getId()).show(getSupportFragmentManager(), "Votacao");
-                return false;
             }
         });
+
 
 
         mMap.setOnMapClickListener(latLng -> {
@@ -81,8 +81,8 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
             //verificar se o usuario já está logado e descomentar isso, se estiver logado ao clicar no mapa ele deve abrir um formulario e após isso salvar o projeto abaixo,
             //passar no projeto as coisas do formulario
             /*  LoginDialogFragment.novaInstancia().show(getSupportFragmentManager(), "LOGIN"); */
-            Projeto projeto = new Projeto(FirebaseRepository.getIdPessoaLogada(), "Construção de um parque", "parque de diversão para crianças", latLng.latitude, latLng.longitude);
-            FirebaseRepository.salvarProjeto(projeto);
+
+            NovoProjetoDialogFragment.novaInstancia(latLng.latitude, latLng.longitude).show(getSupportFragmentManager(), "NOVOPROJETO");
         });
 
     }

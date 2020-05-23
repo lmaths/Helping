@@ -1,6 +1,5 @@
 package com.rightside.helping;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
@@ -12,7 +11,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.rightside.helping.Repository.FirebaseRepository;
-import com.rightside.helping.activity.LoginActivity;
+import com.rightside.helping.fragments.LoginDialogFragment;
 import com.rightside.helping.models.Pessoa;
 import com.rightside.helping.utils.ConstantUtils;
 
@@ -41,8 +40,6 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
 
         FirebaseRepository.salvarPessoa(pessoa);
 
-        startActivity(new Intent(PrincipalActivity.this, LoginActivity.class));
-
     }
 
 
@@ -55,6 +52,11 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
                 mMap.addMarker(new MarkerOptions().position(p.getLatLng()).title(p.getNome()));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p.getLatLng(), 17f));
             }
+
+
+            mMap.setOnMapClickListener(latLng -> {
+               LoginDialogFragment.novaInstancia().show(getSupportFragmentManager(), "LOGIN");
+            });
 
     }
 }

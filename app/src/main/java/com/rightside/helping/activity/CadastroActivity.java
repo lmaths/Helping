@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.rightside.helping.R;
 import com.rightside.helping.Repository.FirebaseRepository;
@@ -35,8 +38,17 @@ public class CadastroActivity extends AppCompatActivity {
     public void salvarUsuario(){
         String nome = editTextNome.getText().toString();
         String tipo = spinnerTipo.getSelectedItem().toString();
-        Pessoa p = new Pessoa(nome, "1", tipo, 0.0,0.0);
-        FirebaseRepository.salvarPessoa(p);
+        Pessoa p = new Pessoa(nome, FirebaseRepository.getIdPessoaLogada(), tipo, 0.0,0.0);
+
+        FirebaseRepository.salvarPessoa(p).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()) {
+                    finish();
+                }
+            }
+        });
+
     }
 
     private void configuraSpinner() {

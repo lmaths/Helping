@@ -26,11 +26,12 @@ public class FirebaseRepository {
         return getBanco().collection(ConstantUtils.PESSOAS).document(user.getId()).set(user.returnPessoa());
     }
 
+
     public static Task<Void> salvarProduto(final Produto p) {
         return getBanco().collection(ConstantUtils.PRODUTO).document(p.getId()).set(p.returnProduto());
     }
 
-    public static String getIdPessoa() {
+    public static String getIdPessoaLogada() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 

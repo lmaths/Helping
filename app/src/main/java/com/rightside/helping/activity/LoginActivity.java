@@ -1,12 +1,12 @@
 package com.rightside.helping.activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -26,7 +26,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
-
 
     private static final String TAG = "LoginGoogle";
     private GoogleSignInClient mGoogleSignInClient;
@@ -74,11 +73,9 @@ public class LoginActivity extends AppCompatActivity {
                             i.putExtra("user", user);
                             startActivity(i);
                         } else {
-                            // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                         }
 
-                        // ...
                     }
                 });
     }

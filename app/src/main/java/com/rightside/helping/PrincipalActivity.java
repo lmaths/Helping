@@ -31,8 +31,8 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        Pessoa pessoa = new Pessoa("joao", "1", -21.658840, -42.347540, "Donatario");
-        Pessoa joao = new Pessoa("Pedro", "2", -21.655753,-42.347941, "Donatario");
+        Pessoa pessoa = new Pessoa("joao", "1", "Donatario", -21.658840, -42.347540);
+        Pessoa joao = new Pessoa("Pedro", "2","Donatario", -21.655753,-42.347941);
         pessoaList = new ArrayList<>();
 
         pessoaList.add(pessoa);

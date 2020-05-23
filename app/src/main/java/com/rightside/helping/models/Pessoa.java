@@ -4,7 +4,9 @@ import com.google.android.gms.maps.model.LatLng;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class Pessoa {
@@ -15,6 +17,6 @@ public class Pessoa {
 
 
     public LatLng getLatLng() {
-        return new LatLng(latitude, longitude);
+        return new LatLng(getLatitude(), getLongitude());
     }
 }

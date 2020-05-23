@@ -38,8 +38,6 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         pessoaList.add(pessoa);
         pessoaList.add(joao);
 
-
-
     }
 
 

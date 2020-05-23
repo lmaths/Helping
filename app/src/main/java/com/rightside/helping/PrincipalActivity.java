@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,6 +31,8 @@ import com.rightside.helping.utils.ConstantUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.val;
+
 public class PrincipalActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -46,7 +49,7 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        ViewModelProjetos viewModelProjetos = ViewModelProviders.of(this).get(ViewModelProjetos.class);
+        val viewModelProjetos = new ViewModelProvider(this).get(ViewModelProjetos.class);
         LiveData<QuerySnapshot> liveData = viewModelProjetos.getQuerySnapshotLiveDataViagens();
         liveData.observe(this, queryDocumentSnapshots -> {
             criaMarkers(queryDocumentSnapshots);

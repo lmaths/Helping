@@ -9,6 +9,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.rightside.helping.models.Pessoa;
+import com.rightside.helping.models.Produto;
 import com.rightside.helping.utils.ConstantUtils;
 
 import java.util.List;
@@ -23,6 +24,11 @@ public class FirebaseRepository {
 
     public static Task<Void> salvarPessoa(final Pessoa user) {
         return getBanco().collection(ConstantUtils.PESSOAS).document(user.getId()).set(user.returnPessoa());
+    }
+
+
+    public static Task<Void> salvarProduto(final Produto p) {
+        return getBanco().collection(ConstantUtils.PRODUTO).document(p.getId()).set(p.returnProduto());
     }
 
     public static String getIdPessoaLogada() {

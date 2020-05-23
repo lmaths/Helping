@@ -13,6 +13,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.models.Pessoa;
 
 import java.util.ArrayList;
@@ -37,6 +38,11 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
 
         pessoaList.add(pessoa);
         pessoaList.add(joao);
+
+        FirebaseRepository.salvarPessoa(pessoa);
+
+
+
 
     }
 

@@ -3,7 +3,9 @@ package com.rightside.helping.utils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Marker;
@@ -36,8 +38,13 @@ public class GeralUtils {
         return marker;
     }
 
+
     public static String formataMoeda(double valor) {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         return formatter.format(valor);
+
+    public static void criaImagemCircular(Context context, String url, ImageView imageView) {
+        Glide.with(context).load(url).circleCrop().into(imageView);
+
     }
 }

@@ -20,6 +20,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.rightside.helping.utils.GeralUtils.formataMoeda;
+
 public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoViewHolder> {
 
     List<Produto> produtos ;
@@ -41,8 +43,8 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoViewHolder> {
     public void onBindViewHolder(@NonNull ProdutoViewHolder holder, int position) {
         Produto p = produtos.get(position);
         holder.textViewNome.setText(p.getNome());
-        holder.textViewPreco.setText(String.valueOf(p.getPreco()));
-        Glide.with(context).load(p.getUrl()).into(holder.imageViewFotoProdut);
+        holder.textViewPreco.setText(formataMoeda(p.getPreco()));
+        Glide.with(context).load(p.getUrl()).into(holder.imageViewFotoProduto);
     }
 
     @Override
@@ -54,7 +56,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoViewHolder> {
 
         @BindView(R.id.textView_nome_produto) TextView textViewNome;
         @BindView(R.id.textView_preco_produto) TextView textViewPreco;
-        @BindView(R.id.imageView) ImageView imageViewFotoProdut;
+        @BindView(R.id.imageView) ImageView imageViewFotoProduto;
 
         public ProdutoViewHolder(@NonNull View itemView) {
             super(itemView);

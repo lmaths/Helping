@@ -15,73 +15,77 @@
         <ImageView
             android:id="@+id/imageView_foto_projetista"
             android:layout_width="30sp"
-            android:layout_height="30sp"></ImageView>
+            android:layout_height="30sp" />
 
         <TextView
+
             android:id="@+id/text_view_autor_projeto"
+  
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="6dp"
             android:layout_weight="1"
-            android:text="Vivian Sena"></TextView>
+            android:textStyle="bold"
+            android:text="Vivian Sena" />
 
         <TextView
-            android:layout_gravity="center_vertical"
-            android:textStyle="bold"
-            android:text="4.5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></TextView>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="1406 votos"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/text_view_titulo_projeto"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:layout_margin="6dp"
         android:text="Reforma da praça Santos Dumond"
-        android:textSize="17sp"
-        android:textStyle="bold"></TextView>
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/text_view_descricao_projeto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Essa praça está abandonada há anos. Ayrton Senna quando criança brincava constante com seus amigos neste lugar. Merece um tratamento especial"
-        android:textSize="12sp"
-        android:textStyle="bold"></TextView>
+        android:textSize="13sp" />
+
 
     <TextView
-        android:layout_marginTop="5dp"
         android:id="@+id/textView_rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="Vote no projeto!"
-        android:textColor="@android:color/black"
-        android:textSize="19sp"
+        android:text="Avalie o projeto"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <RatingBar
         android:id="@+id/ratingBar_projetos"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        android:theme="@style/RatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:stepSize="1" />
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:stepSize="1"
+        android:theme="@style/RatingBar" />
 
     <Button
         android:id="@+id/button_votar"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_margin="16dp"
         android:background="@drawable/button_border"
         android:backgroundTint="@color/colorPrimary"
         android:gravity="center"
-        android:text="Votar"
+        android:text="@string/votar"
         android:textColor="@android:color/white" />
 </LinearLayout>

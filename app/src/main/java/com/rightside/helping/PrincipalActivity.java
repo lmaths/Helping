@@ -54,8 +54,6 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         criaToolbar();
         getSupportActionBar().hide();
 
-
-
         FirebaseRepository.getEmpresas().addSnapshotListener((queryDocumentSnapshots, e) -> {
             criaMarkersEmpresas(queryDocumentSnapshots);
         });
@@ -63,7 +61,7 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         FirebaseRepository.getProjetos().addSnapshotListener((queryDocumentSnapshots, e) -> {
             criaMarkers(queryDocumentSnapshots);
         });
-        
+
         mostraOferta();
     }
 
@@ -98,8 +96,6 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         mMap = googleMap;
 
         mMap.setMapStyle(new MapStyleOptions(getResources().getString(R.string.style_json)));
-
-        //necessitamos pegar a localização do usuario aqui para mover a camera até ele ao abrir o mapa
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-21.658840, -42.347542), 15f));
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
@@ -113,10 +109,6 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
                        VotacaoFragment.novaInstancia(marker.getTag().toString()).show(getSupportFragmentManager(), "Votacao");
                    }
                }
-
-
-
-
             }
         });
 
@@ -124,7 +116,6 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
                 if(GeralUtils.isUsuario(this)) {
                     NovoProjetoDialogFragment.novaInstancia(latLng.latitude, latLng.longitude).show(getSupportFragmentManager(), "NOVOPROJETO");
                 }
-
         });
 
     }
@@ -135,18 +126,16 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         listaEmpresas = queryDocumentSnapshots.toObjects(Empresa.class);
         try {
 
-            for (Empresa projeto : listaEmpresas) {
+            for (Empresa empresa : listaEmpresas) {
                 try {
-                    Marker marker = GeralUtils.criaMarker(mMap, projeto, PrincipalActivity.this);
+                    Marker marker = GeralUtils.criaMarker(mMap, empresa, PrincipalActivity.this);
                     listaDeMarkers.add(marker);
                 } catch (Exception ex) {
                     ex.printStackTrace();
-
                 }
             }
-
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
 
     }
@@ -157,7 +146,9 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         toolbar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.perfil:
-                    startActivity(new Intent(PrincipalActivity.this, PerfilPessoaActivity.class));
+                    if(GeralUtils.isUsuario(this)){
+                        startActivity(new Intent(PrincipalActivity.this, PerfilPessoaActivity.class));
+                    }
                     break;
                 case R.id.ranking:
                     startActivity(new Intent(PrincipalActivity.this, RankingActivity.class));

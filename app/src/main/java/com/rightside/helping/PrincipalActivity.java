@@ -2,11 +2,11 @@ package com.rightside.helping;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -24,14 +24,12 @@ import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Empresa;
 import com.rightside.helping.models.Pontuacao;
 import com.rightside.helping.utils.GeralUtils;
-import com.rightside.helping.viewmodels.ViewModelProjetos;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import lombok.val;
 
 public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -40,6 +38,12 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
     private List<Empresa> listaEmpresas = new ArrayList<>();
 
     @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.imageView_foto_produto)
+    ImageView imageViewFoto;
+    @BindView(R.id.textView_oferta_nome)
+    TextView textViewNome;
+    @BindView(R.id.textView_oferta_nome_empresa) TextView textViewNomeEmpresa;
+    @BindView(R.id.textView_oferta_preco) TextView textViewPreco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +53,8 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        criaToolBar();
+        criaToolbar();
         getSupportActionBar().hide();
-
-        val viewModelProjetos = new ViewModelProvider(this).get(ViewModelProjetos.class);
 
         FirebaseRepository.getEmpresas().addSnapshotListener((queryDocumentSnapshots, e) -> {
             criaMarkersEmpresas(queryDocumentSnapshots);
@@ -83,6 +85,10 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
 
         //  startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
 
+        GeralUtils.criaImagemCircular(this, "https://www.setegotas.com.br/wp-content/uploads/2017/09/%C3%81gua-Sarandi-20-l.jpg" , imageViewFoto);
+        textViewNome.setText("Água mineral");
+        textViewNomeEmpresa.setText("Mercearia do Luiz");
+        textViewPreco.setText("R$ 6.50");
     }
 
 
@@ -161,7 +167,7 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
 
     }
 
-    private void criaToolBar() {
+    private void criaToolbar() {
         toolbar.setTitle(getString(R.string.app_name));
         toolbar.inflateMenu(R.menu.menu_toolbar);
         toolbar.setOnMenuItemClickListener(item -> {

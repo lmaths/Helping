@@ -3,7 +3,9 @@ package com.rightside.helping.utils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Marker;
@@ -32,5 +34,9 @@ public class GeralUtils {
         Marker marker = mMap.addMarker(new MarkerOptions().position(projeto.getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)).title(projeto.getNome()));
         marker.setTag(projeto.getId());
         return marker;
+    }
+
+    public static void criaImagemCircular(Context context, String url, ImageView imageView) {
+        Glide.with(context).load(url).circleCrop().into(imageView);
     }
 }

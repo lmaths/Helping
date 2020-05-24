@@ -8,7 +8,49 @@
     android:padding="16dp"
     tools:context=".fragments.VotacaoFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView_foto_projetista"
+            android:layout_width="30sp"
+            android:layout_height="30sp"></ImageView>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center_vertical"
+            android:text="Vivian Sena"
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"></TextView>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:text="4.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TextView>
+
+    </LinearLayout>
+
     <TextView
+        android:gravity="center_horizontal"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Reforma da praça Santos Dumond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TextView>
+
+    <TextView
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:text="Essa praça está abandonada há anos. Ayrton Senna quando criança brincava constante com seus amigos neste lugar. Merece um tratamento especial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TextView>
+
+    <TextView
+        android:layout_marginTop="5dp"
         android:id="@+id/textView_rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

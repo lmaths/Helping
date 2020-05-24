@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.rightside.helping.R;
 import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.models.Projeto;
+import com.rightside.helping.utils.GeralUtils;
 
 import butterknife.ButterKnife;
 
@@ -49,21 +51,21 @@ public class VotacaoFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_votacao, container, false);
-       ratingBar = view.findViewById(R.id.ratingBar_projetos);
+        ratingBar = view.findViewById(R.id.ratingBar_projetos);
         Button button = view.findViewById(R.id.button_votar);
-       ratingBar.setMax(5);
+        ImageView imageViewFoto = view.findViewById(R.id.imageView_foto_projetista);
+        ratingBar.setMax(5);
 
        Bundle bundle = getArguments();
        String idProjeto = bundle.getString("id");
 
-       FirebaseRepository.getProjeto(idProjeto).addSnapshotListener(new EventListener<DocumentSnapshot>() {
-           @Override
-           public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists()) {
-                    projeto =  documentSnapshot.toObject(Projeto.class);
-                }
-           }
+       FirebaseRepository.getProjeto(idProjeto).addSnapshotListener((documentSnapshot, e) -> {
+            if(documentSnapshot.exists()) {
+                projeto =  documentSnapshot.toObject(Projeto.class);
+            }
        });
+
+        GeralUtils.criaImagemCircular(getContext(), "https://media-exp1.licdn.com/dms/image/C4E03AQHnXO_fLFlLEQ/profile-displayphoto-shrink_200_200/0?e=1596067200&v=beta&t=wOJypA_b993EZMjnGnHDWFlZ6kaEz0LJ9TbGcfFEklw", imageViewFoto);
 
        button.setOnClickListener(view1 -> {
            projeto.setPontos(projeto.getPontos() +  (int) ratingBar.getRating());

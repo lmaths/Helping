@@ -12,6 +12,8 @@ import com.rightside.helping.PrincipalActivity;
 import com.rightside.helping.R;
 import com.rightside.helping.models.Empresa;
 
+import java.text.NumberFormat;
+
 public class GeralUtils {
 
     public static Marker criaMarker(GoogleMap mMap, Empresa projeto, Context context) {
@@ -32,5 +34,10 @@ public class GeralUtils {
         Marker marker = mMap.addMarker(new MarkerOptions().position(projeto.getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)).title(projeto.getNome()));
         marker.setTag(projeto.getId());
         return marker;
+    }
+
+    public static String formataMoeda(double valor) {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        return formatter.format(valor);
     }
 }

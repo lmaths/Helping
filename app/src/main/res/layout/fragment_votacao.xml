@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Vote no projeto!"
+        android:text="@string/vote_no_projeto"
         android:textColor="@android:color/black"
         android:textSize="19sp"
         android:textStyle="bold" />
@@ -73,12 +73,13 @@
 
     <Button
         android:id="@+id/button_votar"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/button_border"
         android:backgroundTint="@color/colorPrimary"
         android:gravity="center"
-        android:text="Votar"
+        android:text="@string/votar"
         android:textColor="@android:color/white" />
 </LinearLayout>

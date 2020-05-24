@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
 
+import com.rightside.helping.activity.PerfilPessoaActivity;
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Projeto;
 import com.rightside.helping.utils.GeralUtils;
@@ -53,7 +54,7 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         });
 
 
-        startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
+        startActivity(new Intent(PrincipalActivity.this, PerfilPessoaActivity.class));
 
     }
 

@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PerfilFragment extends Fragment {
+public class PerfilEmpresaFragment extends Fragment {
 
     @BindView(R.id.imageView_perfil) ImageView imageViewFoto;
     @BindView(R.id.textView_nome_perfil) TextView textViewNome;
@@ -29,13 +29,14 @@ public class PerfilFragment extends Fragment {
     @BindView(R.id.textView_telefone) TextView textViewTelefone;
     @BindView(R.id.textView_nome_do_level) TextView textViewLevel;
     @BindView(R.id.textView_descricao_perfil) TextView textViewDescricao;
+
     @BindView(R.id.progressBar_xp) ProgressBar progressBar;
     @BindView(R.id.textView_progresso) TextView textViewProgresso;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_perfil, container, false);
+        View view = inflater.inflate(R.layout.fragment_perfil_empresa, container, false);
         ButterKnife.bind(this, view);
         Pessoa p = new Pessoa("1", "Sicoob", "sac@sicoob.com.br", getString(R.string.foto_perfil), "0800 725 0996", "");
 

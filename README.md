@@ -1,16 +1,19 @@
->Esse é um arquivo de template e tem como o intuito prover uma breve apresentação de seu projeto para avaliadores e mentores. Sinta-se à vontade para editar os tópicos e títulos de acordo com seu gosto ou até mesmo para deletá-lo ou sobrescreve-lo caso o queira. Cheque também o arquivo [repositorio.md](https://github.com/hackingrio/template/blob/master/repositorio.md) para saber o que acontecerá com esse repositório depois que o evento acabar.
 
-# Nome do produto - 2020
-### Nome do grupo / Nome da Vertical
+# Help!ng - 2020
+### SmartS / Cooperativismo
 
 #### Apresentação 
 
-Use essa seção para falar sobre as motivações de seu time e, de forma breve, qual o produto que estão trabalhando. Se possível forneça **o que** seu produto é, por exemplo: Um app, uma aplicação web, gadget, dentre outros.
+Nossa equipe foi motivada pela urgência do momento que vivemos. Tínhamos certeza que conseguiríamos desenvolver alguma solução que impactasse a sociedade. E então surgiu a cooperativa Help!ng. 
+
+O Help!ing é um app que mostra as empresas e projetos por região no mapa. As empresas e consumidores fazem parte de uma cooperativa onde as empresas buscam visibilidade e em contrapartida ajudam em projetos sociais. Os consumidores também ajudam em projetos sociais e compram com melhores preços das empresas cooperadas. No app, qualquer pessoa pode propor um projeto e esse projeto recebe votos dos cooperados. 
 
 #### O Produto
 
-Entre em mais detalhes sobre seu produto, levantando pontos positivos, o porquê dele ser inovador e como ele ajuda o Brasil e o mundo no combate e minimização de danos causados pela COVID-19.
+O app apresenta uma nova forma de marketing digital. Estamos cansados de termos nossos dados utilizados por empresas de tecnologia para nos incentivar a consumir determinados produtos. Com as limitações impostas pelo COVID-19, o marketing digital se tornou ferramenta indispénsavel para as empresas sobreviverem a crise, com nossa plataforma, as ofertas serão direcionadas para pessoas próximas a sede da empresa. 
 
-#### Informações adicionais 
+Para participar da cooperativa, consumidores e empresas precisam se cadastrar e buscar conquistas em um jogo para obter vantagens. As empresas financiarão projetos sociais e oferecerão vantagens aos consumidores. Os consumidores votarão nos projetos sociais que merecem ser financiados e precisam consumir os produtos das empresas cooperadas para obter mais vantagens.
 
-Forneça informações adicionais, adicione novos tópicos ou subtópicos. Use esse arquivo como um guia rápido para manter claro os objetivos de seu projeto para os demais integrantes. Manter o foco conjunto de forma coesa lhe ajudará a criar um produto mais *sólido*.
+Nossa plataforma troca o dinheiro gasto com facebook e google para investir em pessoas e projetos sociais. Melhorando a vida das pessoas, valorizando as empresas locais e com um marketing saudável. 
+
+

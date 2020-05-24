@@ -2,7 +2,6 @@ package com.rightside.helping;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,17 +15,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.activity.NavigationActivity;
 import com.rightside.helping.activity.PerfilPessoaActivity;
-import com.rightside.helping.fragments.LoginDialogFragment;
 import com.rightside.helping.fragments.NovoProjetoDialogFragment;
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Empresa;
-import com.rightside.helping.models.Pontuacao;
 import com.rightside.helping.utils.GeralUtils;
 
 import java.util.ArrayList;
@@ -69,7 +64,7 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
 //Deletar isso tudo depois
         //   startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
 
-        Empresa empresa = new Empresa();
+        /*Empresa empresa = new Empresa();
         empresa.setDescricao("Teste descricao");
         empresa.setEmail("teste@gmail.com");
         empresa.setTelefone("2277777777");
@@ -82,10 +77,10 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         pontuacao.setPontuacaoTotal(600);
         empresa.setPontuacao(pontuacao);
         empresa.setLatitude(-21.658840);
-        empresa.setLongitude(-42.347542);
+        empresa.setLongitude(-42.347542);*/
         //    new FirebaseRepository().salva(empresa);
 
-        //  startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
+        startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
 
         GeralUtils.criaImagemCircular(this, "https://www.setegotas.com.br/wp-content/uploads/2017/09/%C3%81gua-Sarandi-20-l.jpg" , imageViewFoto);
         textViewNome.setText("Água mineral");

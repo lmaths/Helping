@@ -8,8 +8,8 @@
 
     <item
         android:id="@+id/fragment_votos"
-        android:icon="@drawable/ic_vote"
-        android:title="Votos" />
+        android:icon="@drawable/goal"
+        android:title="Conquistas" />
 
     <item
         android:id="@+id/fragment_promocoes"

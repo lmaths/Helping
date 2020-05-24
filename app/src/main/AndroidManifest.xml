@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.RankingActivity"></activity>
+        <activity android:name=".activity.RankingActivity"
+            android:parentActivityName=".PrincipalActivity"></activity>
         <activity
             android:name=".activity.PerfilPessoaActivity"
             android:parentActivityName=".PrincipalActivity" />

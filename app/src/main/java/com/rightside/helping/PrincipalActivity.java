@@ -22,10 +22,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.activity.NavigationActivity;
 import com.rightside.helping.activity.PerfilPessoaActivity;
+import com.rightside.helping.activity.RankingActivity;
 import com.rightside.helping.fragments.LoginDialogFragment;
 import com.rightside.helping.fragments.NovoProjetoDialogFragment;
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Empresa;
+import com.rightside.helping.models.Pessoa;
 import com.rightside.helping.models.Pontuacao;
 import com.rightside.helping.utils.GeralUtils;
 
@@ -58,6 +60,8 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         criaToolbar();
         getSupportActionBar().hide();
 
+
+
         FirebaseRepository.getEmpresas().addSnapshotListener((queryDocumentSnapshots, e) -> {
             criaMarkersEmpresas(queryDocumentSnapshots);
         });
@@ -73,7 +77,7 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         empresa.setDescricao("Teste descricao");
         empresa.setEmail("teste@gmail.com");
         empresa.setTelefone("2277777777");
-        empresa.setNome("Oi");
+        empresa.setNome("Padaria Pão Gostoso");
         empresa.setImagem("https://upload.wikimedia.org/wikipedia/pt/9/91/Logotipo_da_Oi.png");
         Pontuacao pontuacao = new Pontuacao();
         pontuacao.setNomeDoLevel("Padawan");
@@ -83,7 +87,7 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         empresa.setPontuacao(pontuacao);
         empresa.setLatitude(-21.658840);
         empresa.setLongitude(-42.347542);
-        //    new FirebaseRepository().salva(empresa);
+       // new FirebaseRepository().salva(empresa);
 
         //  startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
 
@@ -125,11 +129,14 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                if(marker.getTag().toString().equalsIgnoreCase("empresa")) {
-                    startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
-                } else {
-                    VotacaoFragment.novaInstancia(marker.getTag().toString()).show(getSupportFragmentManager(), "Votacao");
-                }
+               if(GeralUtils.isUsuario(PrincipalActivity.this)) {
+                   if(marker.getTag().toString().equalsIgnoreCase("empresa")) {
+                       startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
+                   } else {
+                       VotacaoFragment.novaInstancia(marker.getTag().toString()).show(getSupportFragmentManager(), "Votacao");
+                   }
+               }
+
 
 
 
@@ -175,6 +182,8 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
                 case R.id.perfil:
                     startActivity(new Intent(PrincipalActivity.this, PerfilPessoaActivity.class));
                     break;
+                case R.id.ranking:
+                    startActivity(new Intent(PrincipalActivity.this, RankingActivity.class));
             }
             return false;
         });

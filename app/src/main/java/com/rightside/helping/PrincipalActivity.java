@@ -57,7 +57,7 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         });
 
         FirebaseRepository.getProjetos().addSnapshotListener((queryDocumentSnapshots, e) -> {
-            criaMarkersEmpresas(queryDocumentSnapshots);
+            criaMarkers(queryDocumentSnapshots);
         });
 
 //Deletar isso tudo depois
@@ -140,7 +140,6 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
             for (Empresa projeto : listaEmpresas) {
                 try {
                     Marker marker = GeralUtils.criaMarker(mMap, projeto, PrincipalActivity.this);
-                    marker.setTag("projeto");
                     listaDeMarkers.add(marker);
                 } catch (Exception ex) {
                     ex.printStackTrace();

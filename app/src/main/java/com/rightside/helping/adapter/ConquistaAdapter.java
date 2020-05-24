@@ -19,6 +19,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.rightside.helping.utils.GeralUtils.criaImagemCircular;
+
 public class ConquistaAdapter extends RecyclerView.Adapter<ConquistaViewHolder> {
 
     List<Conquista> conquistas;
@@ -43,7 +45,8 @@ public class ConquistaAdapter extends RecyclerView.Adapter<ConquistaViewHolder> 
 
         holder.textViewNome.setText(c.getNome());
         holder.textViewDescricao.setText(c.getDescricao());
-        holder.textViewXp.setText("EXP +" + c.getXp());
+        holder.textViewXp.setText("EXP\n+" + c.getXp());
+        holder.imageViewIcone.setImageResource(c.getIcone());
     }
 
     @Override

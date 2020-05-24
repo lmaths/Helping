@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Conquista {
 
-    private String icone;
+    private int icone;
     private String nome;
     private String descricao;
     private int xp;

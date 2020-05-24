@@ -3,20 +3,18 @@
 
     <item
         android:id="@+id/fragment_marketplace"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_promo"
         android:title="Loja" />
 
     <item
         android:id="@+id/fragment_promocoes"
-        android:icon="@drawable/ic_promo"
+        android:icon="@drawable/price"
         android:title="Promoções" />
 
     <item
         android:id="@+id/fragment_votos"
         android:icon="@drawable/goal"
         android:title="Conquistas" />
-
-
 
     <item
         android:id="@+id/fragment_perfil"

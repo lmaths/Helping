@@ -1,5 +1,7 @@
 package com.rightside.helping.Repository;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -96,7 +98,7 @@ public class FirebaseRepository {
     }
 
     public LiveData<List<Projeto>> getMutableLiveDataProjetosRanking() {
-        Query query = getProjetos().orderBy("pontos", Query.Direction.DESCENDING);
+        Query query = getProjetos().orderBy("quantidadeDeVotos", Query.Direction.DESCENDING);
         query.addSnapshotListener((queryDocumentSnapshots, e) -> {
             mutableLiveDataProjetosRanking.setValue(queryDocumentSnapshots.toObjects(Projeto.class));
         });

@@ -41,11 +41,11 @@ public class ConquistasFragment extends Fragment {
     }
 
     private void setConquistas() {
-        Conquista c1 = new Conquista("", "Parceiro", "Realizar mais de 10 compras no estabelecimento", 35);
-        Conquista c2 = new Conquista("", "Eu quero!", "Adicionar um produto ao favorito", 10);
-        Conquista c3 = new Conquista("", "Que venha!", "Comprar um produto para entrega", 20 );
-        Conquista c4 = new Conquista("", "Compre com cartão", "Faça uma compra usando seu cartão de crédito", 30);
-        Conquista c5 = new Conquista("", "Os melhores", "Compre em uma empresa com nível Mestre+", 50);
+        Conquista c1 = new Conquista(R.drawable.partner,"Parceiro", "Realizar mais de 10 compras no estabelecimento", 35);
+        Conquista c2 = new Conquista(R.drawable.star,"Eu quero!", "Adicionar um produto ao favorito", 10);
+        Conquista c3 = new Conquista(R.drawable.box, "Que venha!", "Comprar um produto para entrega", 20 );
+        Conquista c4 = new Conquista(R.drawable.creditcard, "Compre com cartão", "Faça uma compra usando seu cartão de crédito", 30);
+        Conquista c5 = new Conquista(R.drawable.podium,"Os melhores", "Compre em uma empresa com nível Mestre+", 50);
         conquistas.add(c1);
         conquistas.add(c2);
         conquistas.add(c3);

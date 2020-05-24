@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
+import com.rightside.helping.activity.NavigationActivity;
 import com.rightside.helping.activity.PerfilPessoaActivity;
 import com.rightside.helping.fragments.NovoProjetoDialogFragment;
 import com.rightside.helping.fragments.VotacaoFragment;
@@ -117,7 +118,13 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onInfoWindowClick(Marker marker) {
 
-                VotacaoFragment.novaInstancia(marker.getTag().toString()).show(getSupportFragmentManager(), "Votacao");
+                if(marker.getTag().toString().equalsIgnoreCase("empresa")) {
+                    startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
+                } else {
+                    VotacaoFragment.novaInstancia(marker.getTag().toString()).show(getSupportFragmentManager(), "Votacao");
+                }
+
+
 
             }
         });

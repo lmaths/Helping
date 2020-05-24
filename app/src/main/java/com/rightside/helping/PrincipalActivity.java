@@ -104,7 +104,6 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
                     ex.printStackTrace();
                 }
             }
-
         } catch (Exception e) {
 
         }

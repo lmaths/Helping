@@ -31,6 +31,7 @@ public class PerfilPessoaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_pessoa);
         ButterKnife.bind(this);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Pessoa p = new Pessoa("1", "Ivan Viana", "ivan.viana@live.com", foto, "28 999741833", "");
 

@@ -1,11 +1,11 @@
 package com.rightside.helping;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -15,40 +15,41 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
-
-import com.rightside.helping.fragments.NovoProjetoDialogFragment;
 import com.rightside.helping.activity.PerfilPessoaActivity;
+import com.rightside.helping.fragments.NovoProjetoDialogFragment;
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Empresa;
 import com.rightside.helping.models.Pontuacao;
-import com.rightside.helping.models.Projeto;
 import com.rightside.helping.utils.GeralUtils;
 import com.rightside.helping.viewmodels.ViewModelProjetos;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import lombok.val;
 
-public class PrincipalActivity extends FragmentActivity implements OnMapReadyCallback {
+public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ArrayList<Marker> listaDeMarkers = new ArrayList<>();
     private List<Empresa> listaEmpresas = new ArrayList<>();
 
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        ButterKnife.bind(this);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        criaToolBar();
+        getSupportActionBar().hide();
 
         val viewModelProjetos = new ViewModelProvider(this).get(ViewModelProjetos.class);
 
@@ -151,6 +152,19 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
 
         }
 
+    }
+
+    private void criaToolBar() {
+        toolbar.setTitle(getString(R.string.app_name));
+        toolbar.inflateMenu(R.menu.menu_toolbar);
+        toolbar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.perfil:
+                    startActivity(new Intent(PrincipalActivity.this, PerfilPessoaActivity.class));
+                    break;
+            }
+            return false;
+        });
     }
 
 }

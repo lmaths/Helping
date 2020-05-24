@@ -93,6 +93,11 @@ public class FirebaseRepository {
     }
 
 
+    public static boolean usuarioCadastrado() {
+        return FirebaseAuth.getInstance().getCurrentUser() != null;
+    }
+
+
 
 
 

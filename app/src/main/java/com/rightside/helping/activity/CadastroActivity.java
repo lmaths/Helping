@@ -41,16 +41,7 @@ public class CadastroActivity extends AppCompatActivity {
         String foto = "foto";
         String telefone = "telefone";
         String tipo = spinnerTipo.getSelectedItem().toString();
-        Pessoa p = new Pessoa(nome, FirebaseRepository.getIdPessoaLogada(), email, foto, telefone,tipo);
 
-        FirebaseRepository.salvarPessoa(p).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()) {
-                    finish();
-                }
-            }
-        });
 
     }
 

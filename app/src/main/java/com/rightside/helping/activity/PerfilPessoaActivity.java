@@ -33,7 +33,7 @@ public class PerfilPessoaActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Pessoa p = new Pessoa("1", "Ivan Viana", "ivan.viana@live.com", foto, "28 999741833", "");
+        Pessoa p = new Pessoa("1", "Ivan Viana", "ivan.viana@live.com", foto, "28 999741833");
 
         textViewNome.setText(p.getNome());
         textViewEmail.setText(p.getEmail());

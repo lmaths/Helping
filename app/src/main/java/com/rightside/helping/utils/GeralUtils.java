@@ -14,6 +14,8 @@ import com.rightside.helping.PrincipalActivity;
 import com.rightside.helping.R;
 import com.rightside.helping.models.Empresa;
 
+import java.text.NumberFormat;
+
 public class GeralUtils {
 
     public static Marker criaMarker(GoogleMap mMap, Empresa projeto, Context context) {
@@ -36,7 +38,13 @@ public class GeralUtils {
         return marker;
     }
 
+
+    public static String formataMoeda(double valor) {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        return formatter.format(valor);
+
     public static void criaImagemCircular(Context context, String url, ImageView imageView) {
         Glide.with(context).load(url).circleCrop().into(imageView);
+
     }
 }

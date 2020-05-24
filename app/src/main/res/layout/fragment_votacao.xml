@@ -80,5 +80,5 @@
         android:backgroundTint="@color/colorPrimary"
         android:gravity="center"
         android:text="Votar"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@android:color/white" />
 </LinearLayout>

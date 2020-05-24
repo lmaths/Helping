@@ -33,7 +33,7 @@ public class VotacaoFragment extends DialogFragment {
     @BindView(R.id.textView_titulo_projeto) TextView textViewNomeProjeto;
     @BindView(R.id.textView_descricao_projeto) TextView textViewDescricaoProjeto;
     @BindView(R.id.text_view_autor_projeto) TextView textViewAutorProjeto;
-
+    @BindView(R.id.text_view_pontos) TextView textViewPontos;
     private Projeto projeto;
     private Pessoa pessoa;
 
@@ -62,6 +62,7 @@ public class VotacaoFragment extends DialogFragment {
                 projeto = documentSnapshot.toObject(Projeto.class);
                 textViewNomeProjeto.setText(projeto.getNome());
                 textViewDescricaoProjeto.setText(projeto.getDescricao());
+                textViewPontos.setText(String.valueOf(projeto.getPontos()) + " gostaram");
             }
         });
 
@@ -70,6 +71,7 @@ public class VotacaoFragment extends DialogFragment {
             pessoa = documentSnapshot.toObject(Pessoa.class);
             GeralUtils.criaImagemCircular(getContext(), pessoa.getFoto(), imageViewFoto);
             textViewAutorProjeto.setText(pessoa.getNome());
+
         });
 
 

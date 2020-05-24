@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.rightside.helping.R;
+import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.models.Pessoa;
 
 import butterknife.BindView;
@@ -33,13 +34,15 @@ public class PerfilPessoaActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Pessoa p = new Pessoa("1", "Ivan Viana", "ivan.viana@live.com", foto, "28 999741833");
+        FirebaseRepository.getPessoa(FirebaseRepository.getIdPessoaLogada()).addSnapshotListener((documentSnapshot, e) -> {
 
-        textViewNome.setText(p.getNome());
-        textViewEmail.setText(p.getEmail());
-        textViewLevel.setText("Iniciante");
-        progressBar.setProgress(32);
-        textViewProgresso.setText(progressBar.getProgress() + "/100");
-        Glide.with(this).load(p.getFoto()).circleCrop().into(imageViewFoto);
+            Pessoa pessoa = documentSnapshot.toObject(Pessoa.class);
+            textViewNome.setText(pessoa.getNome());
+            textViewEmail.setText(pessoa.getEmail());
+            textViewLevel.setText("Iniciante");
+            progressBar.setProgress(32);
+            Glide.with(this).load(pessoa.getFoto()).circleCrop().into(imageViewFoto);
+        });
+
     }
 }

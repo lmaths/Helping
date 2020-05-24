@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.rightside.helping.R;
 import com.rightside.helping.adapter.ConquistaAdapter.ConquistaViewHolder;
 import com.rightside.helping.models.Conquista;
@@ -62,6 +63,7 @@ public class ConquistaAdapter extends RecyclerView.Adapter<ConquistaViewHolder> 
         if(tipo == 0) {
             Conquista c = (Conquista) conquistas.get(position);
             holder.textViewNome.setText(c.getNome());
+            Glide.with(context).load(c.getIcone()).into(holder.imageViewIcone);
             holder.textViewDescricao.setText(c.getDescricao());
             holder.textViewXp.setText("EXP +" + c.getXp());
         } else if(tipo == 1) {

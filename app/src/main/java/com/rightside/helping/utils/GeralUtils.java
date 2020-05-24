@@ -42,9 +42,9 @@ public class GeralUtils {
     public static String formataMoeda(double valor) {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         return formatter.format(valor);
+    }
 
     public static void criaImagemCircular(Context context, String url, ImageView imageView) {
         Glide.with(context).load(url).circleCrop().into(imageView);
-
     }
 }

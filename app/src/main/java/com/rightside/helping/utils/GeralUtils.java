@@ -25,9 +25,9 @@ import java.text.NumberFormat;
 public class GeralUtils {
 
     public static Marker criaMarker(GoogleMap mMap, Empresa projeto, Context context) {
-        int height = 120;
-        int width = 90;
-        Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.project_wt);
+        int height = 90;
+        int width = 100;
+        Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.projeto);
         Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
         Marker marker = mMap.addMarker(new MarkerOptions().position(projeto.getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)).title(projeto.getNome()));
         marker.setTag(projeto.getId());
@@ -37,7 +37,7 @@ public class GeralUtils {
     public static Marker criaMarkerEmpresa(GoogleMap mMap, Empresa projeto, Context context) {
         int height = 110;
         int width = 130;
-        Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.company);
+        Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.empresa);
         Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
         Marker marker = mMap.addMarker(new MarkerOptions().position(projeto.getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)).title(projeto.getNome()));
         marker.setTag(projeto.getId());
@@ -49,11 +49,6 @@ public class GeralUtils {
         return formatter.format(valor);
     }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 9b785803b9c4439b52538b6fc5ad4298370af6e9
     public static void criaImagemCircular(Context context, String url, ImageView imageView) {
         Glide.with(context).load(url).circleCrop().into(imageView);
     }

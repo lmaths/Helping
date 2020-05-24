@@ -8,6 +8,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.models.Empresa;
 import com.rightside.helping.models.Pessoa;
 import com.rightside.helping.models.Produto;
@@ -20,6 +22,7 @@ public class FirebaseRepository {
 
     private MutableLiveData<List<Pessoa>> mutableLiveDataPessoas = new MutableLiveData<>();
     private MutableLiveData<List<Projeto>> mutableLiveDataProjetos = new MutableLiveData<>();
+    private MutableLiveData<List<Projeto>> mutableLiveDataProjetosRanking = new MutableLiveData<>();
 
 
     public static FirebaseFirestore getBanco() {
@@ -90,6 +93,15 @@ public class FirebaseRepository {
             mutableLiveDataProjetos.setValue(queryDocumentSnapshots.toObjects(Projeto.class));
         });
         return mutableLiveDataProjetos;
+    }
+
+    public LiveData<List<Projeto>> getMutableLiveDataProjetosRanking() {
+        Query query = getProjetos().orderBy("pontos", Query.Direction.DESCENDING);
+        query.addSnapshotListener((queryDocumentSnapshots, e) -> {
+            mutableLiveDataProjetosRanking.setValue(queryDocumentSnapshots.toObjects(Projeto.class));
+        });
+
+        return mutableLiveDataProjetosRanking;
     }
 
 

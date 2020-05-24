@@ -30,6 +30,7 @@
             android:text="Vivian Sena" />
 
         <TextView
+            android:id="@+id/text_view_pontos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

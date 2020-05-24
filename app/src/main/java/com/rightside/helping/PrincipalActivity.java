@@ -57,11 +57,11 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         });
 
         FirebaseRepository.getProjetos().addSnapshotListener((queryDocumentSnapshots, e) -> {
-            criaMarkers(queryDocumentSnapshots);
+            criaMarkersEmpresas(queryDocumentSnapshots);
         });
 
 //Deletar isso tudo depois
-     //   startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
+        //   startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
 
         Empresa empresa = new Empresa();
         empresa.setDescricao("Teste descricao");
@@ -77,9 +77,9 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         empresa.setPontuacao(pontuacao);
         empresa.setLatitude(-21.658840);
         empresa.setLongitude(-42.347542);
-    //    new FirebaseRepository().salva(empresa);
+        //    new FirebaseRepository().salva(empresa);
 
-      //  startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
+        //  startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
 
     }
 
@@ -112,16 +112,16 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         //necessitamos pegar a localização do usuario aqui para mover a camera até ele ao abri o mapa
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-21.658840, -42.347542), 15f));
 
-
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                VotacaoFragment.novaInstancia(marker.getTag().toString()).show(getSupportFragmentManager(), "Votacao");
-            
 
+                VotacaoFragment.novaInstancia(marker.getTag().toString()).show(getSupportFragmentManager(), "Votacao");
+
+            }
+        });
 
         mMap.setOnMapClickListener(latLng -> {
-
             //verificar se o usuario já está logado e descomentar isso, se estiver logado ao clicar no mapa ele deve abrir um formulario e após isso salvar o projeto abaixo,
             //passar no projeto as coisas do formulario
             /*  LoginDialogFragment.novaInstancia().show(getSupportFragmentManager(), "LOGIN"); */
@@ -131,6 +131,7 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
 
     }
 
+
     private void criaMarkers(QuerySnapshot queryDocumentSnapshots) {
 
         listaEmpresas = queryDocumentSnapshots.toObjects(Empresa.class);
@@ -138,7 +139,7 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
 
             for (Empresa projeto : listaEmpresas) {
                 try {
-                    Marker marker = GeralUtils.criaMarker(mMap, projeto, this);
+                    Marker marker = GeralUtils.criaMarker(mMap, projeto, PrincipalActivity.this);
                     marker.setTag("projeto");
                     listaDeMarkers.add(marker);
                 } catch (Exception ex) {
@@ -154,3 +155,10 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
     }
 
 }
+
+
+
+
+
+
+

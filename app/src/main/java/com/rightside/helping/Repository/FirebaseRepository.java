@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.rightside.helping.models.Empresa;
 import com.rightside.helping.models.Pessoa;
 import com.rightside.helping.models.Produto;
 import com.rightside.helping.models.Projeto;
@@ -29,6 +30,12 @@ public class FirebaseRepository {
         return getBanco().collection(ConstantUtils.PROJETOS).document(getIdPessoaLogada()).set(projeto.returnProjeto());
     }
 
+    public static void salva(Empresa marcador){
+        getBanco().collection(ConstantUtils.EMPRESAS).add(marcador).addOnSuccessListener(documentReference -> {
+            marcador.setId(documentReference.getId());
+            getBanco().collection(ConstantUtils.EMPRESAS).document(documentReference.getId()).set(marcador);
+        });
+    }
 
     public static Task<Void> salvarPessoa(final Pessoa user) {
         return getBanco().collection(ConstantUtils.PESSOAS).document(user.getId()).set(user.returnPessoa());
@@ -55,6 +62,9 @@ public class FirebaseRepository {
         return getBanco().collection(ConstantUtils.PROJETOS);
     }
 
+    public static CollectionReference getEmpresas() {
+        return getBanco().collection(ConstantUtils.EMPRESAS);
+    }
 
 
     public LiveData<List<Pessoa>> getMutableLiveDataPessoas() {

@@ -38,16 +38,14 @@ public class PerfilEmpresaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_perfil_empresa, container, false);
         ButterKnife.bind(this, view);
-        Pessoa p = new Pessoa("1", "Sicoob", "sac@sicoob.com.br", getString(R.string.foto_perfil), "0800 725 0996");
+        Pessoa p = new Pessoa("1", "Padaria Pão Gostoso", "paogostoso@gmail.com", "https://blog.sebraees.com.br/wp-content/uploads/2019/05/padaria-1.jpg", "(22) 98765-4321");
 
         textViewNome.setText(p.getNome());
         textViewEmail.setText(p.getEmail());
         textViewTelefone.setText(p.getTelefone());
-        textViewLevel.setText("Jedi");
-        textViewDescricao.setText("O Sistema de Cooperativas de Crédito (Sicoob) é o maior sistema financeiro cooperativo do Brasil com mais de 4,3 milhões de cooperados, " +
-                "2,8 mil pontos de atendimento, distribuídos em todo país. É composto por cooperativas financeiras e empresas de apoio, que em conjunto oferecem aos cooperados " +
-                "serviços de conta corrente, crédito, investimento, cartões, previdência, consórcio, seguros, cobrança bancária, adquirência de meios eletrônicos de pagamento, " +
-                "dentre outros.");
+        textViewLevel.setText("Mestre");
+        textViewDescricao.setText("A Padaria Pão Gostoso reúne em um único espaço delicias gastronômicas de encher a boca d’água. " +
+                "São 10 seções distribuídas em um ambiente confortável e funcional, tudo para que você se sinta totalmente a vontade..");
         progressBar.setProgress(89);
         textViewProgresso.setText(progressBar.getProgress() + "/100");
         Glide.with(this).load(p.getFoto()).circleCrop().into(imageViewFoto);

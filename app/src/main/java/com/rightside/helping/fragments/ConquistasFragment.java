@@ -45,11 +45,11 @@ public class ConquistasFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
 
-        Conquista c1 = new Conquista(R.drawable.partner,"Parceiro", "Realizar mais de 10 compras no estabelecimento", 35);
-        Conquista c2 = new Conquista(R.drawable.star,"Eu quero!", "Adicionar um produto ao favorito", 10);
-        Conquista c3 = new Conquista(R.drawable.box, "Que venha!", "Comprar um produto para entrega", 20 );
-        Conquista c4 = new Conquista(R.drawable.creditcard, "Compre com cartão", "Faça uma compra usando seu cartão de crédito", 30);
-        Conquista c5 = new Conquista(R.drawable.podium,"Os melhores", "Compre em uma empresa com nível Mestre+", 50);
+        Conquista c1 = new Conquista(R.drawable.partner,"Parceiro", "Realizar mais de 10 compras no estabelecimento", 35, "CONQUISTA");
+        Conquista c2 = new Conquista(R.drawable.star,"Eu quero!", "Adicionar um produto ao favorito", 10, "CONQUISTA");
+        Conquista c3 = new Conquista(R.drawable.box, "Que venha!", "Comprar um produto para entrega", 20, "CONQUISTA" );
+        Conquista c4 = new Conquista(R.drawable.creditcard, "Compre com cartão", "Faça uma compra usando seu cartão de crédito", 30, "CONQUISTA");
+        Conquista c5 = new Conquista(R.drawable.podium,"Os melhores", "Compre em uma empresa com nível Mestre+", 50, "CONQUISTA");
 
         Recompensa r1 = new Recompensa("", "5% de desconto!", "Receba 5% de desconto em todas as suas compras á vista","Intermediario Iniciante","RECOMPENSA" );
         Recompensa r2 = new Recompensa("", "15% de desconto!", "Receba 15% de desconto em todas as suas compras á vista","Intermediario","RECOMPENSA" );

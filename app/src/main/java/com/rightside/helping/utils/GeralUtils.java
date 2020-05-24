@@ -25,7 +25,7 @@ import java.text.NumberFormat;
 public class GeralUtils {
 
     public static Marker criaMarker(GoogleMap mMap, Empresa projeto, Context context) {
-        int height = 90;
+        int height = 100;
         int width = 100;
         Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.projeto);
         Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
@@ -36,7 +36,7 @@ public class GeralUtils {
 
     public static Marker criaMarkerEmpresa(GoogleMap mMap, Empresa projeto, Context context) {
         int height = 110;
-        int width = 130;
+        int width = 110;
         Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.empresa);
         Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
         Marker marker = mMap.addMarker(new MarkerOptions().position(projeto.getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)).title(projeto.getNome()));

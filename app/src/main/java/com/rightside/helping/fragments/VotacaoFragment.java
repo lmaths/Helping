@@ -17,6 +17,7 @@ import com.rightside.helping.R;
 import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.models.Pessoa;
 import com.rightside.helping.models.Projeto;
+import com.rightside.helping.utils.GeralUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -67,7 +68,7 @@ public class VotacaoFragment extends DialogFragment {
 
         FirebaseRepository.getPessoa(idProjeto).addSnapshotListener((documentSnapshot, e) -> {
             pessoa = documentSnapshot.toObject(Pessoa.class);
-            //GeralUtils.criaImagemCircular(this, pessoa.getFoto(), imageViewFoto);
+            GeralUtils.criaImagemCircular(getContext(), pessoa.getFoto(), imageViewFoto);
             textViewAutorProjeto.setText(pessoa.getNome());
         });
 

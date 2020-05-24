@@ -63,10 +63,11 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         FirebaseRepository.getProjetos().addSnapshotListener((queryDocumentSnapshots, e) -> {
             criaMarkers(queryDocumentSnapshots);
         });
+        
+        mostraOferta();
+    }
 
-//Deletar isso tudo depois
-        //   startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
-
+    private void mostraOferta() {
         GeralUtils.criaImagemCircular(this, "https://www.setegotas.com.br/wp-content/uploads/2017/09/%C3%81gua-Sarandi-20-l.jpg" , imageViewFoto);
         textViewNome.setText("Água mineral");
         textViewNomeEmpresa.setText("Mercearia do Luiz");
@@ -98,7 +99,7 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
 
         mMap.setMapStyle(new MapStyleOptions(getResources().getString(R.string.style_json)));
 
-        //necessitamos pegar a localização do usuario aqui para mover a camera até ele ao abri o mapa
+        //necessitamos pegar a localização do usuario aqui para mover a camera até ele ao abrir o mapa
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-21.658840, -42.347542), 15f));
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {

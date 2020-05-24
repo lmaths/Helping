@@ -68,6 +68,7 @@ public class ConquistaAdapter extends RecyclerView.Adapter<ConquistaViewHolder> 
             holder.textViewXp.setText("EXP +" + c.getXp());
         } else if(tipo == 1) {
             Recompensa recompensa = (Recompensa) conquistas.get(position);
+            Glide.with(context).load(recompensa.getIcone()).into(holder.imageViewIcone);
             holder.textViewNome.setText(recompensa.getNome());
             holder.textViewDescricao.setText(recompensa.getDescricao());
             holder.textViewXp.setText("Level necessário +" + recompensa.getLevel());

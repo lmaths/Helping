@@ -65,13 +65,13 @@ public class ConquistaAdapter extends RecyclerView.Adapter<ConquistaViewHolder> 
             holder.textViewNome.setText(c.getNome());
             Glide.with(context).load(c.getIcone()).into(holder.imageViewIcone);
             holder.textViewDescricao.setText(c.getDescricao());
-            holder.textViewXp.setText("EXP +" + c.getXp());
+            holder.textViewXp.setText("EXP\n+" + c.getXp());
         } else if(tipo == 1) {
             Recompensa recompensa = (Recompensa) conquistas.get(position);
             Glide.with(context).load(recompensa.getIcone()).into(holder.imageViewIcone);
             holder.textViewNome.setText(recompensa.getNome());
             holder.textViewDescricao.setText(recompensa.getDescricao());
-            holder.textViewXp.setText("Level necessário +" + recompensa.getLevel());
+            holder.textViewXp.setText("Nível\n" + recompensa.getLevel());
         }
 
     }

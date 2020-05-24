@@ -41,7 +41,6 @@ public class ConquistasFragment extends Fragment {
         ButterKnife.bind(this, view);
         adapter = new ConquistaAdapter(getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
 
@@ -51,9 +50,10 @@ public class ConquistasFragment extends Fragment {
         Conquista c4 = new Conquista(R.drawable.creditcard, "Compre com cartão", "Faça uma compra usando seu cartão de crédito", 30, "CONQUISTA");
         Conquista c5 = new Conquista(R.drawable.podium,"Os melhores", "Compre em uma empresa com nível Mestre+", 50, "CONQUISTA");
 
-        Recompensa r1 = new Recompensa("", "5% de desconto!", "Receba 5% de desconto em todas as suas compras á vista","Intermediario Iniciante","RECOMPENSA" );
-        Recompensa r2 = new Recompensa("", "15% de desconto!", "Receba 15% de desconto em todas as suas compras á vista","Intermediario","RECOMPENSA" );
-        Recompensa r3 = new Recompensa("", "20% de desconto!", "Receba 20% de desconto em todas as suas compras á vista","Intermediario Mestre","RECOMPENSA" );
+        Recompensa r1 = new Recompensa(R.drawable.coin, "5% de desconto!", "Receba 5% de desconto em todas as suas compras á vista","Intermediário+","RECOMPENSA" );
+        Recompensa r2 = new Recompensa(R.drawable.money2, "15% de desconto!", "Receba 15% de desconto em todas as suas compras á vista","Veterano+","RECOMPENSA" );
+        Recompensa r3 = new Recompensa(R.drawable.money1, "20% de desconto!", "Receba 20% de desconto em todas as suas compras á vista","Mestre+","RECOMPENSA" );
+        Recompensa r4 = new Recompensa(R.drawable.frete, "Frete grátis", "Ganhe um frete grátis em qualquer compra","Intermediário+","RECOMPENSA" );
 
 
         conquistas.add(c1);
@@ -66,6 +66,7 @@ public class ConquistasFragment extends Fragment {
         recompensas.add(r1);
         recompensas.add(r2);
         recompensas.add(r3);
+        recompensas.add(r4);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

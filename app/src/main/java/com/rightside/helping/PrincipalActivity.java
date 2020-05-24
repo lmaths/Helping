@@ -2,6 +2,7 @@ package com.rightside.helping;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
@@ -70,7 +71,7 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                VotacaoFragment.novaInstancia(marker.getId()).show(getSupportFragmentManager(), "Votacao");
+                VotacaoFragment.novaInstancia(marker.getTag().toString()).show(getSupportFragmentManager(), "Votacao");
             }
         });
 

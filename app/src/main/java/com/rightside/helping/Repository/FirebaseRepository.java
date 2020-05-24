@@ -55,6 +55,15 @@ public class FirebaseRepository {
         return getBanco().collection(ConstantUtils.PROJETOS);
     }
 
+    public static DocumentReference getProjeto(String id) {
+        return getBanco().collection(ConstantUtils.PROJETOS).document(id);
+    }
+
+
+    public static Task<Void> salvarVoto(Projeto projeto) {
+        return getBanco().collection(ConstantUtils.PROJETOS).document(projeto.getId()).update(projeto.returnProjeto());
+    }
+
 
 
     public LiveData<List<Pessoa>> getMutableLiveDataPessoas() {

@@ -8,4 +8,5 @@ public class ConstantUtils {
     public static final String PRODUTO = "produto";
 
     public static final String PROJETOS = "projetos";
+    public static final String PONTUACAO = "pontuacao";
 }

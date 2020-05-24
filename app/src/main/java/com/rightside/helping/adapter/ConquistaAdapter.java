@@ -22,6 +22,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.rightside.helping.utils.GeralUtils.criaImagemCircular;
+
 public class ConquistaAdapter extends RecyclerView.Adapter<ConquistaViewHolder> {
 
    private List<?> conquistas;
@@ -68,9 +70,6 @@ public class ConquistaAdapter extends RecyclerView.Adapter<ConquistaViewHolder> 
             holder.textViewDescricao.setText(recompensa.getDescricao());
             holder.textViewXp.setText("Level necessário +" + recompensa.getLevel());
         }
-
-
-
 
     }
 

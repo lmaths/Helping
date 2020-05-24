@@ -23,11 +23,6 @@ import java.util.List;
  */
 public class MarketplaceFragment extends Fragment {
 
-    public MarketplaceFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,7 +41,6 @@ public class MarketplaceFragment extends Fragment {
         ProdutoAdapter produtoAdapter = new ProdutoAdapter(produtos, getContext());
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_market_place);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(produtoAdapter);
 

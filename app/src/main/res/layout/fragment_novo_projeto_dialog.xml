@@ -4,9 +4,17 @@
     android:orientation="vertical"
     android:gravity="center"
     android:layout_width="match_parent"
+    android:padding="16dp"
     android:layout_height="match_parent"
     tools:context=".fragments.NovoProjetoDialogFragment">
 
+    <TextView
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Novo Projeto"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -21,7 +29,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText_descricao_projeto"
@@ -31,7 +40,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:layout_margin="16dp"
         android:id="@+id/button_salvar_projeto"
+        android:background="@drawable/button_border"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Salvar" />

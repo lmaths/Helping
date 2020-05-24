@@ -40,16 +40,18 @@
 
     <TextView
 
+        android:id="@+id/text_view_titulo_projeto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_margin="6dp"
+        android:gravity="center_horizontal"
         android:text="Reforma da praça Santos Dumond"
-        android:textSize="18sp"
         android:textColor="@android:color/black"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/text_view_descricao_projeto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Essa praça está abandonada há anos. Ayrton Senna quando criança brincava constante com seus amigos neste lugar. Merece um tratamento especial"

@@ -50,7 +50,7 @@ public class GeralUtils {
         return formatter.format(valor);
     }
 
-    }
+
 
     public static void criaImagemCircular(Context context, String url, ImageView imageView) {
         Glide.with(context).load(url).circleCrop().into(imageView);

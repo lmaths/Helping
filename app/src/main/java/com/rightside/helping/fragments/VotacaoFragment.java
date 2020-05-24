@@ -2,6 +2,7 @@ package com.rightside.helping.fragments;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -27,7 +29,6 @@ import butterknife.ButterKnife;
  */
 public class VotacaoFragment extends DialogFragment {
 
-    @BindView(R.id.ratingBar_projetos) RatingBar ratingBar;
     @BindView(R.id.button_votar) Button buttonVotar;
     @BindView(R.id.imageView_foto_projetista) ImageView imageViewFoto;
     @BindView(R.id.textView_titulo_projeto) TextView textViewNomeProjeto;
@@ -52,8 +53,6 @@ public class VotacaoFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_votacao, container, false);
         ButterKnife.bind(this, view);
 
-        ratingBar.setMax(5);
-
         Bundle bundle = getArguments();
         String idProjeto = bundle.getString("id");
 
@@ -62,7 +61,7 @@ public class VotacaoFragment extends DialogFragment {
                 projeto = documentSnapshot.toObject(Projeto.class);
                 textViewNomeProjeto.setText(projeto.getNome());
                 textViewDescricaoProjeto.setText(projeto.getDescricao());
-                textViewPontos.setText(String.valueOf(projeto.getPontos()) + " gostaram");
+                textViewPontos.setText(projeto.getQuantidadeDeVotos() + " votos");
             }
         });
 
@@ -76,9 +75,12 @@ public class VotacaoFragment extends DialogFragment {
 
 
         buttonVotar.setOnClickListener(view1 -> {
-            projeto.setPontos(projeto.getPontos() + (int) ratingBar.getRating());
             projeto.setQuantidadeDeVotos(projeto.getQuantidadeDeVotos() + 1);
             FirebaseRepository.salvarVoto(projeto);
+            dismiss();
+            Toast toast = Toast.makeText(getContext(), "Obrigado pela avaliação!", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER,0,0);
+            toast.show();
         });
 
 

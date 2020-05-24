@@ -25,9 +25,9 @@ public class GeralUtils {
     }
 
     public static Marker criaMarkerEmpresa(GoogleMap mMap, Empresa projeto, Context context) {
-        int height = 80;
-        int width = 90;
-        Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_action_empresa);
+        int height = 110;
+        int width = 130;
+        Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.company);
         Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
         Marker marker = mMap.addMarker(new MarkerOptions().position(projeto.getLatLng()).icon(BitmapDescriptorFactory.fromBitmap(smallMarker)).title(projeto.getNome()));
         marker.setTag(projeto.getId());

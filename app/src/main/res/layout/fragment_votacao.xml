@@ -39,8 +39,12 @@
     </LinearLayout>
 
     <TextView
+<<<<<<< HEAD
 
         android:id="@+id/text_view_titulo_projeto"
+=======
+        android:id="@+id/textView_titulo_projeto"
+>>>>>>> 9b785803b9c4439b52538b6fc5ad4298370af6e9
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
@@ -51,7 +55,11 @@
         android:textStyle="bold" />
 
     <TextView
+<<<<<<< HEAD
         android:id="@+id/text_view_descricao_projeto"
+=======
+        android:id="@+id/textView_descricao_projeto"
+>>>>>>> 9b785803b9c4439b52538b6fc5ad4298370af6e9
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Essa praça está abandonada há anos. Ayrton Senna quando criança brincava constante com seus amigos neste lugar. Merece um tratamento especial"

@@ -2,6 +2,7 @@ package com.rightside.helping;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,10 +16,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.activity.NavigationActivity;
 import com.rightside.helping.activity.PerfilPessoaActivity;
+import com.rightside.helping.fragments.LoginDialogFragment;
 import com.rightside.helping.fragments.NovoProjetoDialogFragment;
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Empresa;
@@ -135,11 +139,10 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
         });
 
         mMap.setOnMapClickListener(latLng -> {
-            //verificar se o usuario já está logado e descomentar isso, se estiver logado ao clicar no mapa ele deve abrir um formulario e após isso salvar o projeto abaixo,
-            //passar no projeto as coisas do formulario
-            /*  LoginDialogFragment.novaInstancia().show(getSupportFragmentManager(), "LOGIN"); */
+                if(GeralUtils.isUsuario(this)) {
+                    NovoProjetoDialogFragment.novaInstancia(latLng.latitude, latLng.longitude).show(getSupportFragmentManager(), "NOVOPROJETO");
+                }
 
-            NovoProjetoDialogFragment.novaInstancia(latLng.latitude, latLng.longitude).show(getSupportFragmentManager(), "NOVOPROJETO");
         });
 
     }

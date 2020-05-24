@@ -34,6 +34,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.rightside.helping.R;
 import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.activity.CadastroActivity;
+import com.rightside.helping.models.Pessoa;
 import com.rightside.helping.utils.ConstantUtils;
 
 import butterknife.ButterKnife;
@@ -53,8 +54,8 @@ public class LoginDialogFragment extends DialogFragment {
     private static final int RC_SIGN_IN = 9001;
 
     public static LoginDialogFragment novaInstancia() {
-       LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
-       return loginDialogFragment;
+        LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
+        return loginDialogFragment;
     }
 
 
@@ -63,10 +64,8 @@ public class LoginDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login_dialog, container, false);
-        ButterKnife.bind(getContext(), view);
+        ButterKnife.bind(this, view);
         auth = FirebaseAuth.getInstance();
-
-        user = auth.getCurrentUser();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -94,7 +93,7 @@ public class LoginDialogFragment extends DialogFragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Log.d(TAG, "signInWithCredential:success");
-                    verificaPessoa();
+                    verificaPessoa(acct);
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.getException());
                 }
@@ -119,7 +118,8 @@ public class LoginDialogFragment extends DialogFragment {
     }
 
 
-    private void verificaPessoa() {
+    private void verificaPessoa(GoogleSignInAccount account) {
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final DocumentReference documentReference = FirebaseRepository.getBanco().collection(ConstantUtils.PESSOAS).document(FirebaseRepository.getIdPessoaLogada());
         documentReference.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -128,10 +128,16 @@ public class LoginDialogFragment extends DialogFragment {
                     Toast.makeText(getContext(), "Bem vindo de volta", Toast.LENGTH_SHORT).show();
                     dismiss();
                 } else {
-                    Intent i = new Intent(getContext(), CadastroActivity.class);
-                    i.putExtra("nomeUsuario", user.getDisplayName());
-                    startActivity(i);
-                    dismiss();
+                    Pessoa p = new Pessoa(firebaseUser.getUid(), firebaseUser.getDisplayName(), firebaseUser.getEmail(), firebaseUser.getPhotoUrl().toString(), " ");
+
+                    FirebaseRepository.salvarPessoa(p).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()) {
+                                dismiss();
+                            }
+                        }
+                    });
                 }
 
             }

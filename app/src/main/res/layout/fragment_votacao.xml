@@ -18,6 +18,9 @@
             android:layout_height="30sp" />
 
         <TextView
+
+            android:id="@+id/text_view_autor_projeto"
+  
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -36,6 +39,7 @@
     </LinearLayout>
 
     <TextView
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -50,6 +54,7 @@
         android:layout_height="wrap_content"
         android:text="Essa praça está abandonada há anos. Ayrton Senna quando criança brincava constante com seus amigos neste lugar. Merece um tratamento especial"
         android:textSize="13sp" />
+
 
     <TextView
         android:id="@+id/textView_rating"

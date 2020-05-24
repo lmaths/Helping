@@ -1,9 +1,13 @@
 package com.rightside.helping.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,6 +16,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.rightside.helping.PrincipalActivity;
 import com.rightside.helping.R;
+import com.rightside.helping.Repository.FirebaseRepository;
+import com.rightside.helping.fragments.LoginDialogFragment;
 import com.rightside.helping.models.Empresa;
 
 import java.text.NumberFormat;
@@ -44,7 +50,19 @@ public class GeralUtils {
         return formatter.format(valor);
     }
 
+    }
+
     public static void criaImagemCircular(Context context, String url, ImageView imageView) {
         Glide.with(context).load(url).circleCrop().into(imageView);
     }
+
+    public static boolean isUsuario(FragmentActivity activity) {
+        boolean user = FirebaseRepository.usuarioCadastrado();
+        if(!user){
+           LoginDialogFragment.novaInstancia().show(activity.getSupportFragmentManager(), "LOgin");
+            return false;
+        }
+        return true;
+    }
+
 }

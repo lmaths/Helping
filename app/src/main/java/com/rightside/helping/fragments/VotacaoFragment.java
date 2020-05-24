@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,8 +25,11 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.rightside.helping.R;
 import com.rightside.helping.Repository.FirebaseRepository;
+import com.rightside.helping.models.Pessoa;
 import com.rightside.helping.models.Projeto;
 import com.rightside.helping.utils.GeralUtils;
+
+import org.w3c.dom.Text;
 
 import butterknife.ButterKnife;
 
@@ -36,6 +40,7 @@ public class VotacaoFragment extends DialogFragment {
 
     private RatingBar ratingBar;
     private Projeto projeto;
+    private Pessoa pessoa;
 
     public static VotacaoFragment novaInstancia(String idProjeto) {
         VotacaoFragment votacaoFragment = new VotacaoFragment();
@@ -54,6 +59,10 @@ public class VotacaoFragment extends DialogFragment {
         ratingBar = view.findViewById(R.id.ratingBar_projetos);
         Button button = view.findViewById(R.id.button_votar);
         ImageView imageViewFoto = view.findViewById(R.id.imageView_foto_projetista);
+        TextView textViewNomeProjeto = view.findViewById(R.id.text_view_titulo_projeto);
+        TextView textViewDescricaoProjeto = view.findViewById(R.id.text_view_descricao_projeto);
+        TextView textViewAutorProjeto = view.findViewById(R.id.text_view_autor_projeto);
+
         ratingBar.setMax(5);
 
        Bundle bundle = getArguments();
@@ -62,10 +71,23 @@ public class VotacaoFragment extends DialogFragment {
        FirebaseRepository.getProjeto(idProjeto).addSnapshotListener((documentSnapshot, e) -> {
             if(documentSnapshot.exists()) {
                 projeto =  documentSnapshot.toObject(Projeto.class);
+                textViewNomeProjeto.setText(projeto.getNome());
+                textViewDescricaoProjeto.setText(projeto.getDescricao());
             }
        });
 
-        GeralUtils.criaImagemCircular(getContext(), "https://media-exp1.licdn.com/dms/image/C4E03AQHnXO_fLFlLEQ/profile-displayphoto-shrink_200_200/0?e=1596067200&v=beta&t=wOJypA_b993EZMjnGnHDWFlZ6kaEz0LJ9TbGcfFEklw", imageViewFoto);
+
+
+       FirebaseRepository.getPessoa(idProjeto).addSnapshotListener((documentSnapshot, e) -> {
+           pessoa = documentSnapshot.toObject(Pessoa.class);
+            //GeralUtils.criaImagemCircular(this, pessoa.getFoto(), imageViewFoto);
+           textViewAutorProjeto.setText(pessoa.getNome());
+       });
+
+
+
+
+
 
        button.setOnClickListener(view1 -> {
            projeto.setPontos(projeto.getPontos() +  (int) ratingBar.getRating());

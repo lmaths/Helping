@@ -38,7 +38,7 @@ public class PerfilEmpresaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_perfil_empresa, container, false);
         ButterKnife.bind(this, view);
-        Pessoa p = new Pessoa("1", "Sicoob", "sac@sicoob.com.br", getString(R.string.foto_perfil), "0800 725 0996", "");
+        Pessoa p = new Pessoa("1", "Sicoob", "sac@sicoob.com.br", getString(R.string.foto_perfil), "0800 725 0996");
 
         textViewNome.setText(p.getNome());
         textViewEmail.setText(p.getEmail());

@@ -14,12 +14,6 @@ import com.rightside.helping.R;
  * A simple {@link Fragment} subclass.
  */
 public class ConquistasFragment extends Fragment {
-
-    public ConquistasFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

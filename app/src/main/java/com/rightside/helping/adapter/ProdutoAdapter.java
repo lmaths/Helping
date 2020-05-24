@@ -20,6 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.rightside.helping.utils.GeralUtils.criaImagemCircular;
 import static com.rightside.helping.utils.GeralUtils.formataMoeda;
 
 public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoViewHolder> {
@@ -44,7 +45,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoViewHolder> {
         Produto p = produtos.get(position);
         holder.textViewNome.setText(p.getNome());
         holder.textViewPreco.setText(formataMoeda(p.getPreco()));
-        Glide.with(context).load(p.getUrl()).into(holder.imageViewFotoProduto);
+        criaImagemCircular(context, p.getFoto(), holder.imageViewFotoProduto);
     }
 
     @Override

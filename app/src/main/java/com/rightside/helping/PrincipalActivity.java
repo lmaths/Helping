@@ -67,6 +67,8 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
 //Deletar isso tudo depois
         //   startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
 
+
+
         GeralUtils.criaImagemCircular(this, "https://www.setegotas.com.br/wp-content/uploads/2017/09/%C3%81gua-Sarandi-20-l.jpg" , imageViewFoto);
         textViewNome.setText("Água mineral");
         textViewNomeEmpresa.setText("Mercearia do Luiz");

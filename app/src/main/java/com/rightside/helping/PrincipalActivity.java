@@ -20,12 +20,9 @@ import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.activity.NavigationActivity;
 import com.rightside.helping.activity.PerfilPessoaActivity;
 import com.rightside.helping.activity.RankingActivity;
-import com.rightside.helping.fragments.LoginDialogFragment;
 import com.rightside.helping.fragments.NovoProjetoDialogFragment;
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Empresa;
-import com.rightside.helping.models.Pessoa;
-import com.rightside.helping.models.Pontuacao
 import com.rightside.helping.utils.GeralUtils;
 
 import java.util.ArrayList;

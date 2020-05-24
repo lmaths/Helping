@@ -7,12 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Conquista {
+public class Recompensa {
 
     private int icone;
     private String nome;
     private String descricao;
-    private int xp;
+    private String level;
     private String tipo;
-
 }

@@ -63,21 +63,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@android:color/black"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:text="Avalie o projeto"
+        android:text="Gostou? Vote a favor do projeto!"
         android:textSize="18sp"
         android:textStyle="bold" />
-
-    <RatingBar
-        android:id="@+id/ratingBar_projetos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:scaleX="0.8"
-        android:scaleY="0.8"
-        android:stepSize="1"
-        android:theme="@style/RatingBar" />
 
     <Button
         android:id="@+id/button_votar"

@@ -23,6 +23,7 @@ import com.rightside.helping.activity.RankingActivity;
 import com.rightside.helping.fragments.NovoProjetoDialogFragment;
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Empresa;
+import com.rightside.helping.models.Produto;
 import com.rightside.helping.utils.GeralUtils;
 
 import java.util.ArrayList;

@@ -83,7 +83,7 @@ public class VotacaoFragment extends DialogFragment {
         super.onStart();
         Dialog dialog = getDialog();
         if (dialog!= null) {
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
     }
 }

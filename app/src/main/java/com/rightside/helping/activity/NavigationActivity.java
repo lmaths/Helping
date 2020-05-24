@@ -8,7 +8,7 @@ import com.rightside.helping.R;
 import com.rightside.helping.fragments.MarketplaceFragment;
 import com.rightside.helping.fragments.PerfilEmpresaFragment;
 import com.rightside.helping.fragments.PromocoesFragment;
-import com.rightside.helping.fragments.VotosFragment;
+import com.rightside.helping.fragments.ConquistasFragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +30,7 @@ public class NavigationActivity extends AppCompatActivity {
                     inflaFragment(new MarketplaceFragment(), "marketplace");
                     return true;
                 case R.id.fragment_votos:
-                    inflaFragment(new VotosFragment(), "votos");
+                    inflaFragment(new ConquistasFragment(), "votos");
                     return true;
                 case R.id.fragment_promocoes:
                     inflaFragment(new PromocoesFragment(), "promocoes");

@@ -13,9 +13,9 @@ import com.rightside.helping.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class VotosFragment extends Fragment {
+public class ConquistasFragment extends Fragment {
 
-    public VotosFragment() {
+    public ConquistasFragment() {
         // Required empty public constructor
     }
 
@@ -24,6 +24,9 @@ public class VotosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_votos, container, false);
+        View view = inflater.inflate(R.layout.fragment_conquistas, container, false);
+
+
+        return view;
     }
 }

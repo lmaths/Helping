@@ -49,6 +49,11 @@ public class GeralUtils {
         return formatter.format(valor);
     }
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 9b785803b9c4439b52538b6fc5ad4298370af6e9
     public static void criaImagemCircular(Context context, String url, ImageView imageView) {
         Glide.with(context).load(url).circleCrop().into(imageView);
     }

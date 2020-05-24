@@ -2,7 +2,6 @@ package com.rightside.helping;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,8 +15,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
 import com.rightside.helping.activity.NavigationActivity;
@@ -28,7 +25,7 @@ import com.rightside.helping.fragments.NovoProjetoDialogFragment;
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Empresa;
 import com.rightside.helping.models.Pessoa;
-import com.rightside.helping.models.Pontuacao;
+import com.rightside.helping.models.Pontuacao
 import com.rightside.helping.utils.GeralUtils;
 
 import java.util.ArrayList;
@@ -72,24 +69,6 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
 
 //Deletar isso tudo depois
         //   startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
-
-        Empresa empresa = new Empresa();
-        empresa.setDescricao("Teste descricao");
-        empresa.setEmail("teste@gmail.com");
-        empresa.setTelefone("2277777777");
-        empresa.setNome("Padaria Pão Gostoso");
-        empresa.setImagem("https://upload.wikimedia.org/wikipedia/pt/9/91/Logotipo_da_Oi.png");
-        Pontuacao pontuacao = new Pontuacao();
-        pontuacao.setNomeDoLevel("Padawan");
-        pontuacao.setPontuacaoAtual(50);
-        pontuacao.setPontuacaoTotal(100);
-        pontuacao.setPontuacaoTotal(600);
-        empresa.setPontuacao(pontuacao);
-        empresa.setLatitude(-21.658840);
-        empresa.setLongitude(-42.347542);
-       // new FirebaseRepository().salva(empresa);
-
-        //  startActivity(new Intent(PrincipalActivity.this, NavigationActivity.class));
 
         GeralUtils.criaImagemCircular(this, "https://www.setegotas.com.br/wp-content/uploads/2017/09/%C3%81gua-Sarandi-20-l.jpg" , imageViewFoto);
         textViewNome.setText("Água mineral");

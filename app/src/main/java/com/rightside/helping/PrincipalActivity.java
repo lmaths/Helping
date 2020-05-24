@@ -42,10 +42,8 @@ public class PrincipalActivity extends AppCompatActivity implements OnMapReadyCa
     private List<Empresa> listaEmpresas = new ArrayList<>();
 
     @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.imageView_foto_produto)
-    ImageView imageViewFoto;
-    @BindView(R.id.textView_oferta_nome)
-    TextView textViewNome;
+    @BindView(R.id.imageView_foto_produto) ImageView imageViewFoto;
+    @BindView(R.id.textView_oferta_nome) TextView textViewNome;
     @BindView(R.id.textView_oferta_nome_empresa) TextView textViewNomeEmpresa;
     @BindView(R.id.textView_oferta_preco) TextView textViewPreco;
 

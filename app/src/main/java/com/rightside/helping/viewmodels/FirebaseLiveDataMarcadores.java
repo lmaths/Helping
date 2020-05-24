@@ -9,14 +9,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
 
 
-public class FirebaseLiveDataViagens extends LiveData<QuerySnapshot> {
+public class FirebaseLiveDataMarcadores extends LiveData<QuerySnapshot> {
 
     private QueryListenerProjetos listener = new QueryListenerProjetos();
 
     @Override
     protected void onActive() {
         super.onActive();
-        FirebaseRepository.getProjetos().addSnapshotListener(listener);
+        FirebaseRepository.getEmpresas().addSnapshotListener(listener);
     }
 
     private class QueryListenerProjetos implements EventListener<QuerySnapshot> {

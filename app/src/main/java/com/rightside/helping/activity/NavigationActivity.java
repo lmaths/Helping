@@ -6,7 +6,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rightside.helping.R;
 import com.rightside.helping.fragments.MarketplaceFragment;
-import com.rightside.helping.fragments.PerfilFragment;
+import com.rightside.helping.fragments.PerfilEmpresaFragment;
 import com.rightside.helping.fragments.PromocoesFragment;
 import com.rightside.helping.fragments.VotosFragment;
 
@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class NavigationActivity extends AppCompatActivity {
@@ -37,7 +36,7 @@ public class NavigationActivity extends AppCompatActivity {
                     inflaFragment(new PromocoesFragment(), "promocoes");
                     return true;
                 case R.id.fragment_perfil:
-                    inflaFragment(new PerfilFragment(), "perfil");
+                    inflaFragment(new PerfilEmpresaFragment(), "perfil");
                     return true;
             }
             return false;

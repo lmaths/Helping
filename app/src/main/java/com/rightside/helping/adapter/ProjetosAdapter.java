@@ -36,7 +36,7 @@ public class ProjetosAdapter extends RecyclerView.Adapter<ProjetosAdapter.Projet
     @Override
     public void onBindViewHolder(@NonNull ProjetosViewHolder holder, int position) {
         Projeto projeto = projetoList.get(position);
-        holder.projetoPonto.setText("Pontos\n" + projeto.getPontos());
+        holder.projetoPonto.setText("Votos\n" + projeto.getQuantidadeDeVotos());
         holder.projetoNome.setText(projeto.getNome());
 
         switch (position){

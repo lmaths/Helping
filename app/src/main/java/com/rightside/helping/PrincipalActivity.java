@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.rightside.helping.Repository.FirebaseRepository;
 
+import com.rightside.helping.activity.PerfilPessoaActivity;
 import com.rightside.helping.fragments.VotacaoFragment;
 import com.rightside.helping.models.Empresa;
 import com.rightside.helping.models.Pontuacao;
@@ -82,7 +83,6 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
     private void criaMarkersEmpresas(QuerySnapshot queryDocumentSnapshots) {
         listaEmpresas = queryDocumentSnapshots.toObjects(Empresa.class);
         try {
-
             for (Empresa projeto : listaEmpresas) {
                 try {
                     Marker marker = GeralUtils.criaMarkerEmpresa(mMap, projeto, this);
@@ -90,7 +90,6 @@ public class PrincipalActivity extends FragmentActivity implements OnMapReadyCal
                     listaDeMarkers.add(marker);
                 } catch (Exception ex) {
                     ex.printStackTrace();
-
                 }
             }
 
